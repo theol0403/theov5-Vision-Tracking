@@ -7,7 +7,7 @@
 
 c::vision_object_s_t visionOutput;
 
-
+// hellp
 
 int driverBaseAngle()
 {
@@ -23,7 +23,6 @@ int driverBaseAngle()
   return finalBasePower;
 }
 
-// wow
 
 int driverArmAngle()
 {
