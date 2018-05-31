@@ -1,4 +1,7 @@
+
 #include "main.hpp"
+#include "DriverVisionTracking.hpp"
+//#include "DriverScreenDrawing.hpp"
 
 int   screen_origin_x = 150;
 int   screen_origin_y = 20;
@@ -6,12 +9,14 @@ int   screen_width    = 316;
 int   screen_height   = 212;
 
 // function to draw a single object
-void drawObject(c::vision_object_s_t obj)
+void drawObject()
 {
+  c::vision_object_s_t obj = calculateVision();
+
   int labelOffset = 0;
 
   display::set_color_bg(COLOR_YELLOW);
-  display::draw_rect(screen_origin_x + obj.left_coord, screen_origin_y + obj.top_coord, obj.width, obj.height);
+  display::draw_rect((screen_origin_x + obj.left_coord), (screen_origin_y + obj.top_coord), (screen_origin_x + obj.left_coord + obj.width), (screen_origin_y + obj.top_coord + obj.height));
 
   if(obj.left_coord > 280)
   {
@@ -29,12 +34,10 @@ void drawObject(c::vision_object_s_t obj)
 }
 
 // function to draw all objects found
-void drawObjects( vision &v ) {
+void drawObjects() {
   display::set_color_bg(COLOR_GRAY);
-  display::draw_rect(screen_origin_x, screen_origin_y, screen_width, screen_height);
-
-  for(int i=0;i<v.objectCount;i++)
-  drawObject( v.objects[i] );
+  display::draw_rect(screen_origin_x, screen_origin_y, screen_origin_x + screen_width, screen_origin_y + screen_height);
+  drawObject();
 }
 
 void screenDrawTask(void*) {
@@ -56,16 +59,16 @@ void screenDrawTask(void*) {
     visionDraw = calculateVision();
 
     display::set_color_bg(COLOR_WHITE);
-    display::printf( 2, 2, "objects %2d", (int)n );
+    //display::printf( 2, 2, "objects %2d", (int)n );
 
-    display::printf( 6, 2, "Sig      %3d", Vision1.largestObject.id );
-    display::printf( 7, 2, "Center X %3d", Vision1.largestObject.centerX );
-    display::printf( 8, 2, "Center Y %3d", Vision1.largestObject.centerY );
-    display::printf( 9, 2, "Width    %3d", Vision1.largestObject.width );
-    display::printf( 10, 2, "Height   %3d", Vision1.largestObject.height );
+    display::printf( 6, "Sig      %3d", visionDraw.signature);
+    display::printf( 7, "Center X %3d", visionDraw.x_middle_coord );
+    display::printf( 8, "Center Y %3d", visionDraw.y_middle_coord );
+    display::printf( 9, "Width    %3d", visionDraw.width );
+    display::printf( 10, "Height   %3d", visionDraw.height );
 
     // draw any objects found
-    drawObjects( Vision1 );
+    drawObjects();
 
     // run 10 times/second
     delay(100);

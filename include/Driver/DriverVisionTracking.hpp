@@ -2,3 +2,4 @@
 
 int driverBaseAngle();
 int driverArmAngle();
+c::vision_object_s_t calculateVision();
