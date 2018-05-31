@@ -25,11 +25,11 @@ void drawObject()
 
   if(obj.top_coord > 10)
   {
-    display::printf_at(screen_origin_x + obj.left_coord + labelOffset, screen_origin_y + obj.top_coord-3, "Sig %o", obj.signature);
+    pros::c::display_printf_at(screen_origin_x + obj.left_coord + labelOffset, screen_origin_y + obj.top_coord-3, "Sig %o", obj.signature);
   }
   else
   {
-    display::printf_at( screen_origin_x + obj.left_coord + labelOffset, screen_origin_y + obj.top_coord+10, "Sig %o", obj.signature);
+    pros::c::display_printf_at( screen_origin_x + obj.left_coord + labelOffset, screen_origin_y + obj.top_coord+10, "Sig %o", obj.signature);
   }
 }
 
@@ -61,11 +61,11 @@ void screenDrawTask(void*) {
     display::set_color_bg(COLOR_WHITE);
     //display::printf( 2, 2, "objects %2d", (int)n );
 
-    display::printf( 6, "Sig      %3d", visionDraw.signature);
-    display::printf( 7, "Center X %3d", visionDraw.x_middle_coord );
-    display::printf( 8, "Center Y %3d", visionDraw.y_middle_coord );
-    display::printf( 9, "Width    %3d", visionDraw.width );
-    display::printf( 10, "Height   %3d", visionDraw.height );
+    pros::c::display_printf( 6, "Sig      %3d", visionDraw.signature);
+    pros::c::display_printf( 7, "Center X %3d", visionDraw.x_middle_coord );
+    pros::c::display_printf( 8, "Center Y %3d", visionDraw.y_middle_coord );
+    pros::c::display_printf( 9, "Width    %3d", visionDraw.width );
+    pros::c::display_printf( 10, "Height   %3d", visionDraw.height );
 
     // draw any objects found
     drawObjects();
