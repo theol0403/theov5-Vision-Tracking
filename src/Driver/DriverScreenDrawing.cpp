@@ -9,9 +9,11 @@ int   screen_width    = 316;
 int   screen_height   = 212;
 
 // function to draw a single object
-void drawObject()
+void drawObjects(c::vision_object_s_t obj)
 {
-  c::vision_object_s_t obj = calculateVision();
+  display::set_color_bg(COLOR_GRAY);
+  display::draw_rect(screen_origin_x, screen_origin_y, screen_origin_x + screen_width, screen_origin_y + screen_height);
+
 
   int labelOffset = 0;
 
@@ -33,12 +35,6 @@ void drawObject()
   }
 }
 
-// function to draw all objects found
-void drawObjects() {
-  display::set_color_bg(COLOR_GRAY);
-  display::draw_rect(screen_origin_x, screen_origin_y, screen_origin_x + screen_width, screen_origin_y + screen_height);
-  drawObject();
-}
 
 void screenDrawTask(void*) {
   // We have a bug in brightness at the moment
@@ -68,7 +64,7 @@ void screenDrawTask(void*) {
     pros::c::display_printf( 10, "Height   %3d", visionDraw.height );
 
     // draw any objects found
-    drawObjects();
+    drawObjects(visionDraw);
 
     // run 10 times/second
     delay(100);
