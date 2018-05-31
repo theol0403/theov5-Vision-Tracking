@@ -1,0 +1,77 @@
+
+int   screen_origin_x = 150;
+int   screen_origin_y = 20;
+int   screen_width    = 316;
+int   screen_height   = 212;
+
+// function to draw a single object
+void
+drawObject( vision::object &obj ) {
+    int labelOffset = 0;
+
+    Brain.LCD.setPenColor( YELLOW );
+    Brain.LCD.drawRectangle( screen_origin_x + obj.originX, screen_origin_y + obj.originY, obj.width, obj.height );
+    Brain.LCD.font( tFont::mono12 );
+
+    if( obj.originX > 280 )
+      labelOffset = -40;
+    if( obj.originY > 10 )
+      Brain.LCD.printat( screen_origin_x + obj.originX + labelOffset, screen_origin_y + obj.originY-3, "Sig %o", obj.id );
+    else
+      Brain.LCD.printat( screen_origin_x + obj.originX + labelOffset, screen_origin_y + obj.originY+10, "Sig %o", obj.id );
+}
+
+// function to draw all objects found
+void
+drawObjects( vision &v ) {
+    Brain.LCD.setPenColor( BLACK );
+    Brain.LCD.drawRectangle( screen_origin_x, screen_origin_y, screen_width, screen_height, BLACK );
+
+    for(int i=0;i<v.objectCount;i++)
+      drawObject( v.objects[i] );
+}
+
+int main() {
+    // We have a bug in brightness at the moment
+    // it needs lowering from what is set in the vision setup window
+    // you may need to play with this a bit.
+    this_thread::sleep_for(100);
+    Vision1.setBrightness( Vision1.getBrightness() / 2 );
+
+
+
+    // Draw an area representing the vision sensor field of view
+    Brain.LCD.clearScreen( BLACK );
+    Brain.LCD.setPenColor( GREEN );
+    Brain.LCD.drawRectangle( screen_origin_x-1, screen_origin_y-1, screen_width+2, screen_height+2 );
+
+    while(1) {
+      // request any objects with signature 1
+      int n = Vision1.takeSnapshot( SIG_1 );
+
+      Brain.LCD.setPenColor( WHITE );
+      Brain.LCD.font( mono20 );
+      Brain.LCD.cursor( 2, 2 );
+      Brain.LCD.print( "objects %2d", (int)n );
+
+      Brain.LCD.font( mono15 );
+
+      Brain.LCD.cursor(  6, 2 );
+      Brain.LCD.print( "Sig      %3d", Vision1.largestObject.id );
+      Brain.LCD.cursor(  7, 2 );
+      Brain.LCD.print( "Center X %3d", Vision1.largestObject.centerX );
+      Brain.LCD.cursor(  8, 2 );
+      Brain.LCD.print( "Center Y %3d", Vision1.largestObject.centerY );
+      Brain.LCD.cursor(  9, 2 );
+      Brain.LCD.print( "Width    %3d", Vision1.largestObject.width );
+      Brain.LCD.cursor( 10, 2 );
+      Brain.LCD.print( "Height   %3d", Vision1.largestObject.height );
+      Brain.LCD.cursor( 11, 2 );
+
+      // draw any objects found
+      drawObjects( Vision1 );
+
+      // run 10 times/second
+      this_thread::sleep_for(100);
+    }
+}
