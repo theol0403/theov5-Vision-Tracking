@@ -8,7 +8,7 @@
 
 Mutex calculateVisionMutex;
 
-//
+
 c::vision_object_s_t calculateVision()
 {
   calculateVisionMutex.take(100);
