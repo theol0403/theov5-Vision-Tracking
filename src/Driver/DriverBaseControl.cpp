@@ -18,7 +18,15 @@ void driverBaseControl(void*)
 		controllerL_X = mainController.get_analog(ANALOG_LEFT_X);
 		controllerR_X = mainController.get_analog(ANALOG_RIGHT_X);
 
-		baseTurnBias = driverBaseAngle();
+		if (mainController.get_digital(E_CONTROLLER_DIGITAL_X))
+		{
+			baseTurnBias = driverBaseAngle();
+		}
+		else
+		{
+			baseTurnBias = 0;
+		}
+
 
 		baseRightMotors(controllerR_Y - controllerL_X - baseTurnBias);
 		baseLeftMotors(controllerR_Y + controllerL_X + baseTurnBias);
