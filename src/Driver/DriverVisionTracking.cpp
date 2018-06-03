@@ -45,14 +45,3 @@ int driverArmAngle()
 
   return finalArmAngle; // Returns final angle the arm needs to be at (currently y error)
 }
-
-
-
-void displayVision(void*)
-{
-  while(true) {
-    calculateVision();
-    delay(20);
-  }
-
-}
