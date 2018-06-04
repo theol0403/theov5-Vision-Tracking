@@ -6,16 +6,6 @@
 #define BASE_P 1 // The Kp for X error / base power
 
 
-Mutex calculateVisionMutex; // Makes sure no other resource is measuring the vision sensor
-//
-
-c::vision_object_s_t calculateVision() //Function to read vision sensor data
-{
-  calculateVisionMutex.take(100); //Takes mutex so no other instance of function can read at the same time
-  return mainVision.get_by_sig(0, BALL_SIG); // Returns info for largest object of the signature
-  calculateVisionMutex.give(); // Returns mutex
-}
-
 
 int driverBaseAngle() //Function that outputs the power to be sent to the base for turning
 {
@@ -44,4 +34,28 @@ int driverArmAngle()
   int finalArmAngle = y_error; // Eventaully this will be the calculation for an absolute position, but for now it's P
 
   return finalArmAngle; // Returns final angle the arm needs to be at (currently y error)
+}
+
+
+c::vision_object_s_t visionScannerData;
+bool updateVision;
+
+c::vision_object_s_t calculateVision() //Function to read vision sensor data
+{
+  updateVision = true;
+  return visionScannerData;
+}
+
+
+void monitorVisionTask(void*)
+{
+  while(true)
+  {
+    if(updateVision)
+    {
+      visionScannerData = mainVision.get_by_sig(0, BALL_SIG); // Returns info for largest object of the signature
+      updateVision = false;
+    }
+    delay(100);
+  }
 }
