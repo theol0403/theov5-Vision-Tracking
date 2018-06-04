@@ -6,6 +6,8 @@
 *.lo
 *.o
 *.obj
+*.elf
+*.bin
 
 # Precompiled Headers
 *.gch
@@ -31,3 +33,5 @@
 *.out
 *.app
 *.bin
+
+*.log
