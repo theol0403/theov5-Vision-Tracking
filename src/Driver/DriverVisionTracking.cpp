@@ -36,7 +36,7 @@ int driverArmAngle()
   return finalArmAngle; // Returns final angle the arm needs to be at (currently y error)
 }
 
-
+//
 c::vision_object_s_t visionScannerData;
 bool updateVision;
 
