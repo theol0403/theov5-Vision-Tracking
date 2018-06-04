@@ -11,13 +11,13 @@ int   screen_height   = 212;
 // function to draw a single object
 void drawObjects(c::vision_object_s_t obj)
 {
-  display::set_color_bg(COLOR_GRAY);
+  display::set_color_fg(COLOR_GRAY);
   display::draw_rect(screen_origin_x, screen_origin_y, screen_origin_x + screen_width, screen_origin_y + screen_height);
 
 
   int labelOffset = 0;
 
-  display::set_color_bg(COLOR_YELLOW);
+  display::set_color_fg(COLOR_YELLOW);
   display::draw_rect((screen_origin_x + obj.left_coord), (screen_origin_y + obj.top_coord), (screen_origin_x + obj.left_coord + obj.width), (screen_origin_y + obj.top_coord + obj.height));
 
   if(obj.left_coord > 280)
@@ -47,14 +47,14 @@ void screenDrawTask(void*) {
 
   // Draw an area representing the vision sensor field of view
   display::erase();
-  display::set_color_bg(COLOR_GREEN);
+  display::set_color_fg(COLOR_GREEN);
   display::draw_rect(screen_origin_x-1, screen_origin_y-1, screen_width+2, screen_height+2);
 
   while(true) {
     // request any objects with signature 1
     visionDraw = calculateVision();
 
-    display::set_color_bg(COLOR_WHITE);
+    display::set_color_fg(COLOR_WHITE);
     //display::printf( 2, 2, "objects %2d", (int)n );
 
     pros::c::display_printf( 6, "Sig      %3d", visionDraw.signature);
