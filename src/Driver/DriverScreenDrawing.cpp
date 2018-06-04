@@ -1,7 +1,7 @@
 
 #include "main.hpp"
 #include "DriverVisionTracking.hpp"
-//#include "DriverScreenDrawing.hpp"
+#include "DriverScreenDrawing.hpp"
 
 int   screen_origin_x = 150;
 int   screen_origin_y = 20;

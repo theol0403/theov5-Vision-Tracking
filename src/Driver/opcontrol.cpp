@@ -15,7 +15,6 @@ Task driverArmPTask(armP, NULL, TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT,
 Task driverVisionDrawingTask(screenDrawTask, NULL, TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "VisionDrawing");
 Task driverMonitorVisionTask(monitorVisionTask, NULL, TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "VisionPolling");
 
-
   while (true)
   {
     delay(100);
