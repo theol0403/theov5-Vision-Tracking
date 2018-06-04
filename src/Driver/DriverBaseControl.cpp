@@ -1,6 +1,6 @@
 #include "main.hpp"
-#include "../../Include/Driver/DriverBaseControl.hpp"
-#include "../../Include/Driver/DriverVisionTracking.hpp"
+#include "DriverBaseControl.hpp"
+#include "DriverVisionTracking.hpp"
 
 
 

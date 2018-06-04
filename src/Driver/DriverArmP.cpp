@@ -1,6 +1,6 @@
 #include "main.hpp"
-#include "../../Include/Driver/DriverArmP.hpp"
-#include "../../Include/Driver/DriverVisionTracking.hpp"
+#include "DriverArmP.hpp"
+#include "DriverVisionTracking.hpp"
 
 #define potRange 3036 //The pot value of the range of the arm
 #define potAngle 270 //The angle value of the range of the arm

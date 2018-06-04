@@ -1,8 +1,8 @@
 #include "main.hpp"
-#include "../../Include/Driver/DriverBaseControl.hpp"
-#include "../../Include/Driver/DriverArmP.hpp"
-#include "../../Include/Driver/DriverScreenDrawing.hpp"
-#include "../../Include/Driver/DriverVisionTracking.hpp"
+#include "DriverBaseControl.hpp"
+#include "DriverArmP.hpp"
+#include "DriverScreenDrawing.hpp"
+#include "DriverVisionTracking.hpp"
 
 
 
