@@ -8,11 +8,13 @@ int   screen_origin_y = 20;
 int   screen_width    = 316;
 int   screen_height   = 212;
 
+//TODO: Tidy things up to look better
+
 // function to draw a single object
 void drawObjects(c::vision_object_s_t obj)
 {
-  display::set_color_bg(COLOR_BLACK);
-  display::clear_rect(screen_origin_x, screen_origin_y, screen_origin_x + screen_width, screen_origin_y + screen_height);
+  display::set_color_bg(COLOR_GREY);
+  display::clear_rect(screen_origin_x+1, screen_origin_y+1, screen_origin_x-1 + screen_width, screen_origin_y-1 + screen_height);
 
 
   int labelOffset = 0;
@@ -48,7 +50,7 @@ void screenDrawTask(void*) {
   // Draw an area representing the vision sensor field of view
   display::erase();
   display::set_color_fg(COLOR_GREEN);
-  display::draw_rect(screen_origin_x-1, screen_origin_y-1, screen_width+2, screen_height+2);
+  display::draw_rect(screen_origin_x-2, screen_origin_y-2, screen_width+2, screen_height+2);
 
   while(true) {
     // request any objects with signature 1
