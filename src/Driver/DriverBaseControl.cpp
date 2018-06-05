@@ -9,7 +9,7 @@ void driverBaseControl(void*)
 	int controllerR_Y;
 	int controllerL_X;
 	int controllerR_X;
-	int baseTurnBias;
+	float baseTurnBias;
 
 
 	while(true)
@@ -39,19 +39,19 @@ void driverBaseControl(void*)
 
 
 
-void baseLeftMotors(int value)
+void baseLeftMotors(float value)
 {
 	pros::Motor leftBaseMotor(1, pros::c::E_MOTOR_GEARSET_36, false);
 	leftBaseMotor.move_voltage(value * 100);
 }
 
-void baseRightMotors(int value)
+void baseRightMotors(float value)
 {
 	pros::Motor rightBaseMotor(5, pros::c::E_MOTOR_GEARSET_36, true);
 	rightBaseMotor.move_voltage(value * 100);
 }
 
-void baseHMotor(int value)
+void baseHMotor(float value)
 {
 	pros::Motor hBaseMotor(2, pros::c::E_MOTOR_GEARSET_36, true);
 	hBaseMotor.move(value);

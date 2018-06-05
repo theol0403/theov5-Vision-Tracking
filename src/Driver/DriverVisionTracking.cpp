@@ -2,21 +2,17 @@
 
 #include "DriverVisionTracking.hpp"
 
-#define BALL_SIG 2 // Defunes the vision signature that is trained for the ball
-#define BASE_P 1 // The Kp for X error / base power
-
-
+#define BALL_SIG 2 // Defines the vision signature that is trained for the ball
+#define BASE_P 0.7 // The Kp for X error / base power
 
 int driverBaseAngle() //Function that outputs the power to be sent to the base for turning
 {
-  int baseP = BASE_P; //The P for X error or angle error / motor power
-
   int x_error = calculateVision().x_middle_coord;
   // Since 0,0 is the middle of the sensor's feild of veiw (set in initialize), any x deriviation is our error
   // If the vision sensor is not centered with the arm, a trig formula needs to be here.
   // It will then output absolute, or most likely relative angle error. P will have to be changed
 
-  int finalBasePower = x_error * baseP; // For now a simple P based on X deriviation from the center of the vision
+  float finalBasePower = x_error * BASE_P; // For now a simple P based on X deriviation from the center of the vision
 
   return finalBasePower; //Returns power to be sent to the base
 }
