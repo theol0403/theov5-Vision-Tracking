@@ -25,11 +25,11 @@ The actual definitions need to be in MotorDefinition.cpp
 
 #ifndef _MOTOR_CONFIG_
 #define _MOTOR_CONFIG_
-extern pros::Controller mainController;
-extern pros::Motor leftBaseMotor;
-extern pros::Motor rightBaseMotor;
-extern pros::Motor hBaseMotor;
-extern pros::Motor armMotor;
+//extern pros::Controller mainController;
+//extern pros::Motor leftBaseMotor;
+//extern pros::Motor rightBaseMotor;
+//extern pros::Motor hBaseMotor;
+//extern pros::Motor armMotor;
 extern pros::Vision mainVision;
 #endif
 

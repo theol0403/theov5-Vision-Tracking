@@ -2,7 +2,7 @@
 
 #include "DriverVisionTracking.hpp"
 
-#define BALL_SIG 1 // Defunes the vision signature that is trained for the ball
+#define BALL_SIG 2 // Defunes the vision signature that is trained for the ball
 #define BASE_P 1 // The Kp for X error / base power
 
 

@@ -11,8 +11,8 @@ int   screen_height   = 212;
 // function to draw a single object
 void drawObjects(c::vision_object_s_t obj)
 {
-  display::set_color_fg(COLOR_GRAY);
-  display::draw_rect(screen_origin_x, screen_origin_y, screen_origin_x + screen_width, screen_origin_y + screen_height);
+  display::set_color_bg(COLOR_BLACK);
+  display::clear_rect(screen_origin_x, screen_origin_y, screen_origin_x + screen_width, screen_origin_y + screen_height);
 
 
   int labelOffset = 0;
