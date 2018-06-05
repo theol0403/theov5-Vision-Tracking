@@ -25,7 +25,7 @@ pros::Motor armMotor(4);
 
     finalArmPower = error * ARM_P;
 
-    armMotor.move(finalArmPower);
+    armMotor.move_voltage(finalArmPower * 100);
     delay(20);
   }
 }

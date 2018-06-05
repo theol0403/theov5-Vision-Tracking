@@ -54,5 +54,5 @@ void baseRightMotors(float value)
 void baseHMotor(float value)
 {
 	pros::Motor hBaseMotor(2, pros::c::E_MOTOR_GEARSET_36, true);
-	hBaseMotor.move(value);
+	hBaseMotor.move_voltage(value * 100);
 }

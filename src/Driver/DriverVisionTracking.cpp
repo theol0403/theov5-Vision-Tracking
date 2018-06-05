@@ -7,7 +7,7 @@
 #define VISION_WIDTH 500
 #define VISION_HEIGHT 400
 
-int driverBaseAngle() //Function that outputs the power to be sent to the base for turning
+float driverBaseAngle() //Function that outputs the power to be sent to the base for turning
 {
   int x_error = calculateVision().x_middle_coord - VISION_WIDTH/2;
   // Centers the vision, and any x deriviation is our error
