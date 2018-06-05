@@ -42,13 +42,13 @@ void driverBaseControl(void*)
 void baseLeftMotors(int value)
 {
 	pros::Motor leftBaseMotor(1, pros::c::E_MOTOR_GEARSET_36, false);
-	leftBaseMotor.move(value);
+	leftBaseMotor.move_voltage(value * 100);
 }
 
 void baseRightMotors(int value)
 {
 	pros::Motor rightBaseMotor(5, pros::c::E_MOTOR_GEARSET_36, true);
-	rightBaseMotor.move(value);
+	rightBaseMotor.move_voltage(value * 100);
 }
 
 void baseHMotor(int value)
