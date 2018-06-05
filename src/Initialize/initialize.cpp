@@ -1,6 +1,6 @@
 #include "main.hpp"
 
-
+pros::Controller mainController(CONTROLLER_MASTER);
 void initialize()
 {
     //mainVision.set_zero_point(pros::c::E_VISION_ZERO_CENTER);

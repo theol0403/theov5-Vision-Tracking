@@ -51,6 +51,7 @@ void monitorVisionTask(void*)
 {
   while(true)
   {
+    pros::Vision mainVision(6);
     if(updateVision)
     {
       visionScannerData = mainVision.get_by_sig(0, BALL_SIG); // Returns info for largest object of the signature

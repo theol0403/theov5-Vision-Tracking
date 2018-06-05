@@ -10,6 +10,8 @@
 
 void armP(void*)
 {
+pros::Motor armMotor(4);
+
   int error;
   //int wanted;
   int finalArmPower;
