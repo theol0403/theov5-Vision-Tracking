@@ -6,15 +6,15 @@
 #define potAngle 270 //The angle value of the range of the arm
 #define potOffset 0 //The offset for a certain pot value to be zero degrees
 
-#define ARM_P 0.1
+#define ARM_P 1.3
 
 void armP(void*)
 {
-  pros::ADIMotor armMotor(1);
+  Motor armMotor(3);
 
-  int error;
+  float error;
   //int wanted;
-  int finalArmPower;
+  float finalArmPower;
 
   while(true)
   {
@@ -25,7 +25,16 @@ void armP(void*)
 
     finalArmPower = error * ARM_P;
 
-    armMotor.set_value(finalArmPower);
+
+    if (mainController.get_digital(E_CONTROLLER_DIGITAL_LEFT))
+    {
+      armMotor.move_voltage(finalArmPower * 100);
+    }
+    else
+    {
+      armMotor.move_voltage(0);
+    }
+
     delay(20);
   }
 }

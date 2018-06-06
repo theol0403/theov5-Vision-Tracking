@@ -12,7 +12,7 @@ float driverBaseAngle() //Function that outputs the power to be sent to the base
   // If the vision sensor is not centered with the arm, a trig formula needs to be here.
   // It will then output absolute, or most likely relative angle error. P will have to be changed
 
-float finalBasePower;
+  float finalBasePower;
   if(calculateVision().signature == 255)
   {
     finalBasePower = 0;
@@ -27,8 +27,16 @@ float finalBasePower;
 
 int driverArmAngle()
 {
+  int y_error;
 
-  int y_error = (calculateVision().y_middle_coord * -1) + VISION_FOV_HEIGHT - VISION_FOV_HEIGHT/2;
+  if(calculateVision().signature == 255)
+  {
+    y_error = 0;
+  }
+  else
+  {
+    y_error = (calculateVision().y_middle_coord * -1) + VISION_FOV_HEIGHT - VISION_FOV_HEIGHT/2;
+  }
   // Appearently a positive y is down, I prefer to work with positive y being up
   // Centers the vision, and any x deriviation is our error
   // If the vision sensor is not centered with the arm, a trig formula needs to be here.
