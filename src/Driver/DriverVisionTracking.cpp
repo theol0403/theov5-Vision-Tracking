@@ -2,21 +2,28 @@
 
 #include "DriverVisionTracking.hpp"
 
-#define BALL_SIG 1 // Defunes the vision signature that is trained for the ball
-#define BASE_P 1 // The Kp for X error / base power
+#define BALL_SIG 2 // Defines the vision signature that is trained for the ball
+#define BASE_P 0.4 // The Kp for X error / base power
 
-
-
-int driverBaseAngle() //Function that outputs the power to be sent to the base for turning
+float driverBaseAngle() //Function that outputs the power to be sent to the base for turning
 {
-  int baseP = BASE_P; //The P for X error or angle error / motor power
 
-  int x_error = calculateVision().x_middle_coord;
-  // Since 0,0 is the middle of the sensor's feild of veiw (set in initialize), any x deriviation is our error
+  int x_error = calculateVision().x_middle_coord - VISION_FOV_WIDTH/2;
+  // Centers the vision, and any x deriviation is our error
   // If the vision sensor is not centered with the arm, a trig formula needs to be here.
   // It will then output absolute, or most likely relative angle error. P will have to be changed
 
-  int finalBasePower = x_error * baseP; // For now a simple P based on X deriviation from the center of the vision
+float finalBasePower;
+  if(calculateVision().signature == 255)
+  {
+    finalBasePower = 0;
+  }
+  else
+  {
+    finalBasePower = x_error * BASE_P; // For now a simple P based on X deriviation from the center of the vision
+  }
+
+
 
   return finalBasePower; //Returns power to be sent to the base
 }
@@ -25,9 +32,9 @@ int driverBaseAngle() //Function that outputs the power to be sent to the base f
 int driverArmAngle()
 {
 
-  int y_error = calculateVision().y_middle_coord * -1;
+  int y_error = (calculateVision().y_middle_coord * -1) + VISION_FOV_HEIGHT - VISION_FOV_HEIGHT/2;
   // Appearently a positive y is down, I prefer to work with positive y being up
-  // Since 0,0 is the middle of the sensor's feild of veiw (set in initialize), any y deriviation is our error
+  // Centers the vision, and any x deriviation is our error
   // If the vision sensor is not centered with the arm, a trig formula needs to be here.
   // It will then output absolute angle error, to be P'd by the arm task
 
@@ -51,6 +58,7 @@ void monitorVisionTask(void*)
 {
   while(true)
   {
+    pros::Vision mainVision(6);
     if(updateVision)
     {
       visionScannerData = mainVision.get_by_sig(0, BALL_SIG); // Returns info for largest object of the signature

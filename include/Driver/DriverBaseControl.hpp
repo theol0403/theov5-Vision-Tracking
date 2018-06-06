@@ -1,11 +1,8 @@
 #include "main.hpp"
 
-void baseLeftMotors(int);
-void baseRightMotors(int);
+void baseLeftMotors(float);
+void baseRightMotors(float);
 
-void baseHMotor(int);
+void baseHMotor(float);
 
 void driverBaseControl(void*);
-
-
-int driverAngleP();

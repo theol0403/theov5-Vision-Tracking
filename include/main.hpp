@@ -18,23 +18,7 @@ using namespace pros;
 
 // User ________________________________________________________________________________________________________________________________
 
-/*
-Here, define your device prototypes, so the rest of the code can have access to them.
-The actual definitions need to be in MotorDefinition.cpp
-*/
-
-#ifndef _MOTOR_CONFIG_
-#define _MOTOR_CONFIG_
 extern pros::Controller mainController;
-extern pros::Motor leftBaseMotor;
-extern pros::Motor rightBaseMotor;
-extern pros::Motor hBaseMotor;
-extern pros::Motor armMotor;
-extern pros::Vision mainVision;
-#endif
-
-
-
 /*
 Include here prototypes and variables you want the entire project to have access to.
 If not, include each header induvidually per source file.
