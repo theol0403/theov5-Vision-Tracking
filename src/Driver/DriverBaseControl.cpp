@@ -10,6 +10,7 @@ void driverBaseControl(void*)
 	int controllerL_X;
 	int controllerR_X;
 	float baseTurnBias;
+	float baseForwardBias;
 
 	while(true)
 	{
@@ -20,15 +21,17 @@ void driverBaseControl(void*)
 		if (mainController.get_digital(E_CONTROLLER_DIGITAL_DOWN))
 		{
 			baseTurnBias = driverBaseAngle();
+			baseForwardBias = driverBaseForward();
 		}
 		else
 		{
 			baseTurnBias = 0;
+			baseForwardBias = 0;
 		}
 
 
-		baseRightMotors(controllerR_Y - controllerL_X - baseTurnBias);
-		baseLeftMotors(controllerR_Y + controllerL_X + baseTurnBias);
+		baseRightMotors(controllerR_Y - controllerL_X - baseTurnBias - baseForwardBias);
+		baseLeftMotors(controllerR_Y + controllerL_X + baseTurnBias - baseForwardBias);
 
 		baseHMotor(controllerR_X);
 
