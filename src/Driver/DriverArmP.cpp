@@ -10,7 +10,7 @@
 
 void armP(void*)
 {
-pros::Motor armMotor(4);
+  pros::ADIMotor armMotor(1);
 
   int error;
   //int wanted;
@@ -25,7 +25,7 @@ pros::Motor armMotor(4);
 
     finalArmPower = error * ARM_P;
 
-    armMotor.move_voltage(finalArmPower * 100);
+    armMotor.set_value(finalArmPower);
     delay(20);
   }
 }
