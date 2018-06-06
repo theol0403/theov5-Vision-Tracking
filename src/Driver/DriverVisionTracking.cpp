@@ -4,7 +4,6 @@
 
 #define BALL_SIG 2 // Defines the vision signature that is trained for the ball
 #define BASE_P 0.6 // The Kp for X error / base power
-#define BASE_DISTANCE_WIDTH 70
 
 float driverBaseAngle() //Function that outputs the power to be sent to the base for turning
 {
@@ -21,24 +20,6 @@ float finalBasePower;
   else
   {
     finalBasePower = x_error * BASE_P; // For now a simple P based on X deriviation from the center of the vision
-  }
-  return finalBasePower; //Returns power to be sent to the base
-}
-
-
-float driverBaseForward() //Function that outputs the power to be sent to the base for turning
-{
-  int distance_error = calculateVision().width - BASE_DISTANCE_WIDTH;
-
-
-float finalBasePower;
-  if(calculateVision().signature == 255)
-  {
-    finalBasePower = 0;
-  }
-  else
-  {
-    finalBasePower = distance_error * BASE_P * 3; // For now a simple P based on X deriviation from the center of the vision
   }
   return finalBasePower; //Returns power to be sent to the base
 }
