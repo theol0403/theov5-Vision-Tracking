@@ -35,6 +35,6 @@ void armP(void*)
       armMotor.move_voltage(0);
     }
 
-    delay(20);
+    delay(10);
   }
 }
