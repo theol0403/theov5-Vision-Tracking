@@ -28,11 +28,11 @@ void armP(void*)
 
     if (mainController.get_digital(E_CONTROLLER_DIGITAL_LEFT))
     {
-      armMotor.move_voltage(finalArmPower * 100);
+      armMotor.move(finalArmPower);
     }
     else
     {
-      armMotor.move_voltage(0);
+      armMotor.move(0);
     }
 
     delay(10);
