@@ -57,6 +57,7 @@
 #include "pros/motors.hpp"
 #include "pros/rtos.hpp"
 #include "pros/vision.hpp"
+#include "pros/tmei.hpp"
 #endif
 
 #endif /* _PROS_API_H_ */
