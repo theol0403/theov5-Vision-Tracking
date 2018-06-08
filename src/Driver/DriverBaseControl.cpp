@@ -44,17 +44,17 @@ void driverBaseControl(void*)
 void baseLeftMotors(float value)
 {
 	pros::Motor leftBaseMotor(1, pros::c::E_MOTOR_GEARSET_36, false);
-	leftBaseMotor.move_voltage(value * 100);
+	leftBaseMotor.move(value);
 }
 
 void baseRightMotors(float value)
 {
 	pros::Motor rightBaseMotor(5, pros::c::E_MOTOR_GEARSET_36, true);
-	rightBaseMotor.move_voltage(value * 100);
+	rightBaseMotor.move(value);
 }
 
 void baseHMotor(float value)
 {
 	pros::Motor hBaseMotor(2, pros::c::E_MOTOR_GEARSET_36, true);
-	hBaseMotor.move_voltage(value * 100);
+	hBaseMotor.move(value);
 }
