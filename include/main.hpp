@@ -31,7 +31,7 @@ Then, in a source file, you can bring in all the different outside functions you
 
 
 
-
+void autonomous();
 
 
 #endif  // _PROS_MAIN_H_

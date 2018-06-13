@@ -1,6 +1,5 @@
 #include "main.hpp"
 #include "DriverBaseControl.hpp"
-#include "DriverVisionTracking.hpp"
 
 
 
@@ -37,7 +36,7 @@ void baseLeftMotors(float value)
 
 void baseRightMotors(float value)
 {
-	pros::Motor rightBaseMotor(5, pros::c::E_MOTOR_GEARSET_36, true);
+	pros::Motor rightBaseMotor(2, pros::c::E_MOTOR_GEARSET_36, true);
 	rightBaseMotor.move(value);
 }
 
