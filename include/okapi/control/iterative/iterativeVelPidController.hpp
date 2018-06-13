@@ -15,12 +15,11 @@
 namespace okapi {
 class IterativeVelPIDControllerArgs : public IterativeVelocityControllerArgs {
   public:
-  IterativeVelPIDControllerArgs(const double ikP, const double ikD, const double ikF);
+  IterativeVelPIDControllerArgs(const double ikP, const double ikD);
 
-  IterativeVelPIDControllerArgs(const double ikP, const double ikD, const double ikF,
-                                const VelMathArgs &iparams);
+  IterativeVelPIDControllerArgs(const double ikP, const double ikD, const VelMathArgs &iparams);
 
-  const double kP, kD, kF;
+  const double kP, kD;
   const VelMathArgs params;
 };
 
@@ -32,7 +31,7 @@ class IterativeVelPIDController : public IterativeVelocityController {
    * @param ikP proportional gain
    * @param ikD derivative gain
    */
-  IterativeVelPIDController(const double ikP, const double ikD, const double ikF);
+  IterativeVelPIDController(const double ikP, const double ikD);
 
   /**
    * Velocity PID controller.
@@ -40,8 +39,7 @@ class IterativeVelPIDController : public IterativeVelocityController {
    * @param ikP proportional gain
    * @param ikD derivative gain
    */
-  IterativeVelPIDController(const double ikP, const double ikD, const double ikF,
-                            const VelMathArgs &iparams);
+  IterativeVelPIDController(const double ikP, const double ikD, const VelMathArgs &iparams);
 
   /**
    * Velocity PID controller.
@@ -53,8 +51,8 @@ class IterativeVelPIDController : public IterativeVelocityController {
   /**
    * This constructor is meant for unit testing.
    */
-  IterativeVelPIDController(const double ikP, const double ikD, const double ikF,
-                            std::unique_ptr<VelMath> ivelMath, std::unique_ptr<Timer> iloopDtTimer,
+  IterativeVelPIDController(const double ikP, const double ikD, std::unique_ptr<VelMath> ivelMath,
+                            std::unique_ptr<Timer> iloopDtTimer,
                             std::unique_ptr<SettledUtil> isettledUtil);
 
   /**
@@ -159,7 +157,7 @@ class IterativeVelPIDController : public IterativeVelocityController {
    * @param ikD derivative gain
    * @param ikBias controller bias
    */
-  virtual void setGains(const double ikP, const double ikD, const double ikF);
+  virtual void setGains(const double ikP, const double ikD);
 
   /**
    * Sets the number of encoder ticks per revolution. Default is 1800.
@@ -174,7 +172,7 @@ class IterativeVelPIDController : public IterativeVelocityController {
   virtual QAngularSpeed getVel() const;
 
   protected:
-  double kP, kD, kF;
+  double kP, kD;
   QTime lastTime;
   QTime sampleTime = 10_ms;
   double error = 0;
