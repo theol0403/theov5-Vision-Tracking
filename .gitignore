@@ -40,3 +40,5 @@ bin/output.elf
 bin/output.bin
 bin/_pros_ld_timestamp.o
 *.ini
+
+compile_commands.json
