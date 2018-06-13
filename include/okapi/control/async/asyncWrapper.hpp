@@ -19,16 +19,14 @@ class AsyncWrapper : virtual public AsyncController {
   public:
   /**
    * A wrapper class that transforms an IterativeController into an AsyncController by running it in
-   * another task. The input controller will act like an AsyncController. The output of the
-   * IterativeController will be scaled by the given scale (127 by default).
+   * another task. The input controller will act like an AsyncController.
    *
    * @param iinput controller input, passed to the IterativeController
    * @param ioutput controller output, written to from the IterativeController
    * @param icontroller the controller to use
-   * @param iscale the scale applied to the controller output
    */
   AsyncWrapper(std::shared_ptr<ControllerInput> iinput, std::shared_ptr<ControllerOutput> ioutput,
-               std::unique_ptr<IterativeController> icontroller, const double iscale = 127);
+               std::unique_ptr<IterativeController> icontroller);
 
   /**
    * Sets the target for the controller.
@@ -100,7 +98,6 @@ class AsyncWrapper : virtual public AsyncController {
   std::shared_ptr<ControllerOutput> output;
   std::unique_ptr<IterativeController> controller;
   pros::Task task;
-  const double scale = 127;
 
   static void trampoline(void *context);
   void loop();
