@@ -28,7 +28,7 @@ float driverBaseAngle() //Function that outputs the power to be sent to the base
 
 
 
-float driverBaseForward() //Function that outputs the power to be sent to the base for turning
+float driverBaseForward() //Function that outputs the power to be sent to the base for moving forward
 {
   int distance_error = calculateVision().width - BASE_DISTANCE_WIDTH;
 
