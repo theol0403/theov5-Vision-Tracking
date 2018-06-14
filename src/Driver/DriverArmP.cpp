@@ -10,6 +10,7 @@
 
 void armP(void*)
 {
+  pros::Controller mainController(CONTROLLER_MASTER);
   Motor armMotor(3);
 
   float error;

@@ -18,7 +18,7 @@ using namespace pros;
 
 // User ________________________________________________________________________________________________________________________________
 
-extern pros::Controller mainController;
+//extern pros::Controller mainController;
 /*
 Include here prototypes and variables you want the entire project to have access to.
 If not, include each header induvidually per source file.

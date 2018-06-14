@@ -6,6 +6,7 @@
 
 void driverBaseControl(void*)
 {
+	pros::Controller mainController(CONTROLLER_MASTER);
 	int controllerR_Y;
 	int controllerL_X;
 	int controllerR_X;
