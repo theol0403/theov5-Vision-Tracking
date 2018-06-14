@@ -6,7 +6,7 @@
 
 void baseMotorsMove(int powerLeft, int powerRight, int forwardTime)
 {
-  pros::Motor leftBaseMotor(1, pros::c::E_MOTOR_GEARSET_36, false);
+  pros::Motor leftBaseMotor(3, pros::c::E_MOTOR_GEARSET_36, false);
   pros::Motor rightBaseMotor(2, pros::c::E_MOTOR_GEARSET_36, true);
 
   leftBaseMotor.move(powerLeft);
