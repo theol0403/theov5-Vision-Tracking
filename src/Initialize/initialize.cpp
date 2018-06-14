@@ -1,6 +1,6 @@
 #include "main.hpp"
 
-
+pros::Controller mainController(CONTROLLER_MASTER);
 void initialize()
 {
 

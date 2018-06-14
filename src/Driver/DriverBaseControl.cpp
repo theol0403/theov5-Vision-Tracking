@@ -6,7 +6,6 @@
 
 void driverBaseControl(void*)
 {
-	pros::Controller mainController(CONTROLLER_MASTER);
 	int controllerR_Y;
 	int controllerL_X;
 	int controllerR_X;
@@ -34,7 +33,7 @@ void driverBaseControl(void*)
 		baseRightMotors(controllerR_Y - controllerL_X - baseTurnBias - baseForwardBias);
 		baseLeftMotors(controllerR_Y + controllerL_X + baseTurnBias - baseForwardBias);
 
-		baseHMotor(controllerR_X);
+		//baseHMotor(controllerR_X);
 
 		pros::delay(10);
 	}
@@ -53,9 +52,10 @@ void baseRightMotors(float value)
 	pros::Motor rightBaseMotor(5, pros::c::E_MOTOR_GEARSET_36, true);
 	rightBaseMotor.move(value);
 }
-
+/*
 void baseHMotor(float value)
 {
 	pros::Motor hBaseMotor(2, pros::c::E_MOTOR_GEARSET_36, true);
 	hBaseMotor.move(value);
 }
+*/

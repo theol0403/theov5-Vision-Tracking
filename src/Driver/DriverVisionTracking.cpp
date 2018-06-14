@@ -40,7 +40,7 @@ float driverBaseForward() //Function that outputs the power to be sent to the ba
   }
   else
   {
-    finalBasePower = distance_error * BASE_P * 7; // For now a simple P based on X deriviation from the center of the vision
+    finalBasePower = distance_error * BASE_P * 5; // For now a simple P based on X deriviation from the center of the vision
   }
   return finalBasePower; //Returns power to be sent to the base
 }
